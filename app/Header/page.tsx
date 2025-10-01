@@ -15,7 +15,7 @@ export default function Header() {
     { value: 450, label: "Code\nCommits" }
   ];
 
-    const countRefs = useRef([]);
+    const countRefs = useRef<(HTMLHeadingElement | null)[]>([]);   
 
     useEffect(() => {
         countRefs.current.forEach((el, index) => {
@@ -32,7 +32,7 @@ export default function Header() {
                 }
             }
         })
-    }, []);
+    }, [statsData]);
 
     return (
     <header className="h-[100vh] text-white py-[12]  relative">    
@@ -90,8 +90,8 @@ export default function Header() {
         <div className="stats px-[8%] lg:px-[16%] mt-[30] hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">        
             {statsData.map((stat,index) => (
                 <div key={index} className="flex gap-2 items-center">
-                    <h1
-                        ref={(el) => (countRefs.current[index] = el)}
+                    <h1                        
+                         ref={(el) => { countRefs.current[index] = el; }}
                         className="text-7xl font-unbounded font-bold"
                     >
                         0
