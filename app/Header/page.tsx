@@ -4,16 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import Hero from "@/public/Hero.png";
 import { CountUp } from "countup.js";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 
 export default function Header() {
   //statsData
-  const statsData = [
+  const statsData = useMemo(() => [
     { value: 12, label: "Years of\nExperience" },
     { value: 22, label: "Projects\nCompleted" },
     { value: 7, label: "Technologies\nMastered" },
     { value: 450, label: "Code\nCommits" }
-  ];
+  ], []);
 
     const countRefs = useRef<(HTMLHeadingElement | null)[]>([]);   
 
